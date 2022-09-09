@@ -14,15 +14,13 @@ namespace ToDoWinApp
         [STAThread]
         static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             ToDoView view = new ToDoView();
-            //view.Visible = true;
             IList<ToDoItem> items = new List<ToDoItem>();
             ToDoController controller = new ToDoController(view, items);
             controller.LoadView();
             Application.Run(view);
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new ToDoView());
         }
     }
 }
