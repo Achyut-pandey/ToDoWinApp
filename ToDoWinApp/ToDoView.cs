@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace ToDoWinApp
 {
+    /// <summary>
+    /// View of the application
+    /// </summary>
     public partial class ToDoView : Form, ITodoView
     {
         public ToDoView()
@@ -19,21 +22,25 @@ namespace ToDoWinApp
 
         public ToDoController _controller;
 
+        // Task Name
         public string ToDoItemName
         {
             get { return txtTaskName.Text; }
             set { txtTaskName.Text = value; }
         }
+        // Unique ID for Task
         public int ToDoUID
         {
             get { return (int)numTaskID.Value; }
             set { numTaskID.Value = value; }
         }
+        // Category of the task
         public string Category
         {
             get { return cbCategory.Text; }
             set { cbCategory.Text = value; }
         }
+        // Task's Current Status
         public int ToDoStatus
         {
             get 
@@ -63,22 +70,31 @@ namespace ToDoWinApp
                 }
             }
         }
+        // What estimated date to do task would complete?
         public DateTime EstimateCompletionDate
         {
             get { return dtpEstimatedDate.Value; }
             set { dtpEstimatedDate.Value = value; }
         }
+        // Actual date when to do task completed.
         public DateTime ActualCompletionDate
         {
             get { return dtpActualDate.Value; }
             set { dtpActualDate.Value = value; }
         }
 
+        /// <summary>
+        /// Removing all data from Grid
+        /// </summary>
         public void ClearGrid()
         {
             dgvTask.DataSource = null;
         }
 
+        /// <summary>
+        /// Selecting Unique ID from todo list
+        /// </summary>
+        /// <returns></returns>
         public int GetIdOfSelectedToDoInGrid()
         {
             if (this.dgvTask.SelectedRows.Count > 0)
@@ -87,6 +103,10 @@ namespace ToDoWinApp
                 return 0;
         }
 
+        /// <summary>
+        /// Adding Item in to do list
+        /// </summary>
+        /// <param name="item"></param>
         void ITodoView.AddToDoItemToGrid(ToDoItem item)
         {
             string strStatus = string.Empty;
@@ -102,6 +122,10 @@ namespace ToDoWinApp
             dgvTask.Rows.Add(item.ToDoItemName, item.ToDoUID, item.Category, strStatus, item.EstimateCompletionDate, item.ActualCompletionDate);
         }
 
+        /// <summary>
+        /// Removing Item from the todo list
+        /// </summary>
+        /// <param name="item"></param>
         void ITodoView.RemoveToDoItemFromGrid(ToDoItem item)
         {
             foreach(DataGridViewRow row in this.dgvTask.SelectedRows)
@@ -110,11 +134,19 @@ namespace ToDoWinApp
             }
         }
 
+        /// <summary>
+        /// Attaching controller in view
+        /// </summary>
+        /// <param name="controller"></param>
         void ITodoView.SetController(ToDoController controller)
         {
             _controller = controller;
         }
 
+        /// <summary>
+        /// Select item in the to do list
+        /// </summary>
+        /// <param name="item"></param>
         void ITodoView.SetSelectedToDoItemInGrid(ToDoItem item)
         {
           foreach(DataGridViewRow row in this.dgvTask.SelectedRows)
@@ -124,6 +156,10 @@ namespace ToDoWinApp
             }
         }
 
+        /// <summary>
+        /// Update item in todo list after selecting row
+        /// </summary>
+        /// <param name="item"></param>
         void ITodoView.UpdateGridWithChangedToDoItem(ToDoItem item)
         {
             foreach (DataGridViewRow rowToUpdate in this.dgvTask.SelectedRows)
@@ -148,22 +184,42 @@ namespace ToDoWinApp
             }
         }
 
+        /// <summary>
+        /// Reset button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReset_Click(object sender, EventArgs e)
         {
             _controller.AddNewToDoItem();
         }
 
+        /// <summary>
+        /// Remove button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemoveTask_Click(object sender, EventArgs e)
         {
             _controller.RemoveToDoItem();
         }
 
+        /// <summary>
+        /// Update buttong click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdateTask_Click(object sender, EventArgs e)
         {
  
             _controller.Save();
         }
 
+        /// <summary>
+        /// Selection Changed event for datagridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvTask_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvTask.SelectedRows == null || dgvTask.SelectedRows.Count <=0)

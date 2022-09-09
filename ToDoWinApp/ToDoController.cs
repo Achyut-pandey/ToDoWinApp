@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ToDoWinApp
 {
+    /// <summary>
+    /// Controller of the Application
+    /// </summary>
     public class ToDoController
     {
         ITodoView _todoView;

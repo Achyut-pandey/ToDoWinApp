@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ToDoWinApp
 {
+    /// <summary>
+    /// Model of the application
+    /// </summary>
     public class ToDoItem
     {
         private string _todoItemName;
