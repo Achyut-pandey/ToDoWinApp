@@ -28,6 +28,10 @@ namespace ToDoWinApp
             get { return _todoItems; }
         }
 
+        /// <summary>
+        /// Updating the Todo item in todoview
+        /// </summary>
+        /// <param name="todoItem"></param>
         private void updateToDoViewDetailValues(ToDoItem todoItem)
         {
             _todoView.ToDoItemName = todoItem.ToDoItemName;
@@ -38,6 +42,10 @@ namespace ToDoWinApp
             _todoView.ActualCompletionDate = todoItem.ActualCompletionDate;
         }
 
+        /// <summary>
+        /// Updating todo item from todoview
+        /// </summary>
+        /// <param name="todoItem"></param>
         private void updateToDoItemWithViewValues(ToDoItem todoItem) 
         {
             todoItem.ToDoItemName = _todoView.ToDoItemName;
@@ -48,6 +56,9 @@ namespace ToDoWinApp
             todoItem.ActualCompletionDate = _todoView.ActualCompletionDate;
         }
 
+        /// <summary>
+        /// Loading View in case persistent memory or database
+        /// </summary>
         public void LoadView()
         {
             _todoView.ClearGrid();
@@ -62,6 +73,10 @@ namespace ToDoWinApp
             }
         }
 
+        /// <summary>
+        /// Get selected item from the view
+        /// </summary>
+        /// <param name="selectedToDoItemID"></param>
         public void SelectedToDoItemChanged(int selectedToDoItemID)
         {
             foreach (var item in this.ToDoItems)
@@ -76,6 +91,9 @@ namespace ToDoWinApp
 
         }
 
+        /// <summary>
+        /// Resetting the view
+        /// </summary>
         public void AddNewToDoItem()
         {
             _selectedToDoItem = new ToDoItem("", 1, "", 3, DateTime.Now, DateTime.Now);
@@ -83,6 +101,9 @@ namespace ToDoWinApp
 
         }
 
+        /// <summary>
+        /// Deleting the todo item in todo list
+        /// </summary>
         public void RemoveToDoItem()
         {
             int id = this._todoView.GetIdOfSelectedToDoInGrid();
@@ -114,6 +135,9 @@ namespace ToDoWinApp
             }
         }
 
+        /// <summary>
+        /// Adding/Updating the todoitem based on todolist
+        /// </summary>
         public void Save()
         {
             _selectedToDoItem = new ToDoItem("", 0, "", 0, DateTime.Now, DateTime.Now);

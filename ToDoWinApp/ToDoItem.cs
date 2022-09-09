@@ -11,6 +11,9 @@ namespace ToDoWinApp
     /// </summary>
     public class ToDoItem
     {
+        /// <summary>
+        /// Task Name of ToDo Item
+        /// </summary>
         private string _todoItemName;
         public string ToDoItemName
         {
@@ -18,6 +21,9 @@ namespace ToDoWinApp
             set { _todoItemName = value; }
         }
 
+        /// <summary>
+        /// Unique ID of ToDo Item
+        /// </summary>
         private int _todoUID;
         public int ToDoUID
         {
@@ -25,6 +31,9 @@ namespace ToDoWinApp
             set { _todoUID = value; }
         }
 
+        /// <summary>
+        /// Category of ToDo Item
+        /// </summary>
         private string _category;
         public string Category
         {
@@ -32,6 +41,9 @@ namespace ToDoWinApp
             set { _category = value; }
         }
 
+        /// <summary>
+        /// Current Status of ToDo Item
+        /// </summary>
         private int _todostatus;
         public int ToDoStatus
         {
@@ -39,6 +51,9 @@ namespace ToDoWinApp
             set { _todostatus = value; }
         }
 
+        /// <summary>
+        /// Estimated Completion Date of ToDo Item
+        /// </summary>
         private DateTime _estimateCompletionDate;
         public DateTime EstimateCompletionDate
         {
@@ -46,6 +61,9 @@ namespace ToDoWinApp
             set { _estimateCompletionDate = value; }
         }
 
+        /// <summary>
+        /// Actual Completion Date
+        /// </summary>
         private DateTime _actualCompletionDate;
         public DateTime ActualCompletionDate
         {
@@ -53,6 +71,15 @@ namespace ToDoWinApp
             set { _actualCompletionDate = value; }
         }
 
+        /// <summary>
+        /// Populating the todo item in model
+        /// </summary>
+        /// <param name="todoName"></param>
+        /// <param name="todoUID"></param>
+        /// <param name="category"></param>
+        /// <param name="todoStatus"></param>
+        /// <param name="estimatedCompletion"></param>
+        /// <param name="actualCompletion"></param>
         public ToDoItem(string todoName, int todoUID, string category, int todoStatus, DateTime estimatedCompletion, DateTime actualCompletion)
         {
             _todoItemName = todoName;
